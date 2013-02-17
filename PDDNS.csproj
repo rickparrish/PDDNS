@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{02B15360-3ED9-439D-8ABF-B1EF22668E11}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RandM.PDDNS</RootNamespace>
+    <AssemblyName>PDDNS</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllButGlobalizationRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Fatcow-Farm-Fresh-World.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>PDDNS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConfigureEmailAlerts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigureEmailAlerts.Designer.cs">
+      <DependentUpon>ConfigureEmailAlerts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logging.cs" />
+    <Compile Include="LogWindowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogWindowForm.Designer.cs">
+      <DependentUpon>LogWindowForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Provider.cs" />
+    <Compile Include="ProviderName.cs" />
+    <Compile Include="Providers.cs" />
+    <Compile Include="Providers\DtDNS\DtDNSProvider.cs" />
+    <Compile Include="Providers\Dyn\AddEditDynForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Providers\Dyn\AddEditDynForm.Designer.cs">
+      <DependentUpon>AddEditDynForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.cs" />
+    <Compile Include="ConfigureIPDetectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigureIPDetectionForm.Designer.cs">
+      <DependentUpon>ConfigureIPDetectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Providers\DtDNS\AddEditDtDNSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Providers\DtDNS\AddEditDtDNSForm.Designer.cs">
+      <DependentUpon>AddEditDtDNSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HostConfig.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Providers\Dyn\DynProvider.cs" />
+    <Compile Include="Providers\NoIP\AddEditNoIPForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Providers\NoIP\AddEditNoIPForm.Designer.cs">
+      <DependentUpon>AddEditNoIPForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Providers\NoIP\NoIPProvider.cs" />
+    <Compile Include="Providers\Point\EditPointForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Providers\Point\EditPointForm.Designer.cs">
+      <DependentUpon>EditPointForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Providers\Point\AddPointForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Providers\Point\AddPointForm.Designer.cs">
+      <DependentUpon>AddPointForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Providers\Point\PointProvider.cs" />
+    <Compile Include="Providers\Point\PointZoneRecords.cs" />
+    <Compile Include="Providers\Point\PointZones.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConfigureEmailAlerts.resx">
+      <DependentUpon>ConfigureEmailAlerts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigureIPDetectionForm.resx">
+      <DependentUpon>ConfigureIPDetectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogWindowForm.resx">
+      <DependentUpon>LogWindowForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Providers\DtDNS\AddEditDtDNSForm.resx">
+      <DependentUpon>AddEditDtDNSForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Providers\Dyn\AddEditDynForm.resx">
+      <DependentUpon>AddEditDynForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Providers\NoIP\AddEditNoIPForm.resx">
+      <DependentUpon>AddEditNoIPForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Providers\Point\EditPointForm.resx">
+      <DependentUpon>EditPointForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Providers\Point\AddPointForm.resx">
+      <DependentUpon>AddPointForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="PDDNS.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fatcow-Farm-Fresh-World-go.ico" />
+    <None Include="Resources\Fatcow-Farm-Fresh-World-delete.ico" />
+    <None Include="Resources\Fatcow-Farm-Fresh-World.ico" />
+    <EmbeddedResource Include="EmailTemplates\NewVersion.html" />
+    <EmbeddedResource Include="EmailTemplates\UpdateError.html" />
+    <EmbeddedResource Include="EmailTemplates\IPChange.html" />
+    <Content Include="Fatcow-Farm-Fresh-World.ico" />
+    <Content Include="Icon 16+32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DLL\RMLibUI\RMLibUI.csproj">
+      <Project>{01c2c32e-3fc5-4241-9725-d84af6620d78}</Project>
+      <Name>RMLibUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DLL\RMLib\RMLib.csproj">
+      <Project>{c57f0d98-f290-42c1-97bd-cd85b47a2fb4}</Project>
+      <Name>RMLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
