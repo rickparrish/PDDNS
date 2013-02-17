@@ -35,6 +35,7 @@ namespace RandM.PDDNS
             if (disposing && (components != null))
             {
                 components.Dispose();
+                if (Logging.instance != null) Logging.instance.Dispose();
             }
             base.Dispose(disposing);
         }

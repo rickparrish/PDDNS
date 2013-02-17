@@ -40,11 +40,11 @@ namespace RandM.PDDNS
         public StringDictionary ProviderSpecificSettings { get; set; }
         public string Username { get; set; }
 
-        public HostConfig(string hostName) : base()
+        public HostConfig(string hostname) : base()
         {
             Disabled = false;
             DisabledReason = "";
-            Hostname = hostName;
+            Hostname = hostname;
             LastUpdateDate = DateTime.MinValue;
             LastUpdateIP = "";
             Password = "";
@@ -52,7 +52,7 @@ namespace RandM.PDDNS
             ProviderSpecificSettings = new StringDictionary();
             Username = "";
 
-            base.Load(hostName);
+            base.Load(hostname);
         }
 
         public static string[] GetHostnames()

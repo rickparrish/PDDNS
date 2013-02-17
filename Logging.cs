@@ -25,15 +25,50 @@ using System.Windows.Forms;
 
 namespace RandM.PDDNS
 {
-    public class Logging
+    public class Logging : IDisposable
     {
         public static Logging instance = new Logging();
 
+        private bool _Disposed = false;
         private LogWindowForm _LogWindow = new LogWindowForm();
 
         ~Logging()
         {
-            _LogWindow.Dispose();
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            // This object will be cleaned up by the Dispose method.
+            // Therefore, you should call GC.SupressFinalize to
+            // take this object off the finalization queue
+            // and prevent finalization code for this object
+            // from executing a second time.
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            // Check to see if Dispose has already been called.
+            if (!_Disposed)
+            {
+                // If disposing equals true, dispose all managed
+                // and unmanaged resources.
+                if (disposing)
+                {
+                    // Dispose managed resources.
+                    if (_LogWindow != null) _LogWindow.Dispose();
+                }
+
+                // Call the appropriate methods to clean up
+                // unmanaged resources here.
+                // If disposing is false,
+                // only the following code is executed.
+
+                // Note disposing has been done.
+                _Disposed = true;
+            }
         }
 
         public void LogDebug(string message)

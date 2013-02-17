@@ -32,11 +32,14 @@ namespace RandM.PDDNS
             this.AddForm = typeof(AddEditDtDNSForm).FullName;
             this.EditForm = typeof(AddEditDtDNSForm).FullName;
             this.Name = name;
-            this.Url = "http://www.dtdns.com";
+            this.Url = new Uri("http://www.dtdns.com");
         }
 
         public override void Update(HostConfig HC, IPAddress ipAddress)
         {
+            if (HC == null) throw new ArgumentNullException("HC");
+            if (ipAddress == null) throw new ArgumentNullException("ipAddress");
+
             using (RMWebClient WC = new RMWebClient())
             {
                 string Url = "https://www.dtdns.com/api/autodns.cfm";

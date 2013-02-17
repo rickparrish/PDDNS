@@ -28,11 +28,11 @@ namespace RandM.PDDNS
 {
     public abstract class Provider
     {
-        public string Name;
-        public string Url;
+        public string Name { get; set; }
+        public Uri Url { get; set; }
 
-        protected string AddForm;
-        protected string EditForm;
+        protected string AddForm { get; set; }
+        protected string EditForm { get; set; }
 
         public bool Add()
         {

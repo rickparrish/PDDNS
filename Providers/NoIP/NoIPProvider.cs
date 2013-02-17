@@ -32,11 +32,14 @@ namespace RandM.PDDNS
             this.AddForm = typeof(AddEditNoIPForm).FullName;
             this.EditForm = typeof(AddEditNoIPForm).FullName;
             this.Name = name;
-            this.Url = "http://www.noip.com";
+            this.Url = new Uri("http://www.noip.com");
         }
 
         public override void Update(HostConfig HC, IPAddress ipAddress)
         {
+            if (HC == null) throw new ArgumentNullException("HC");
+            if (ipAddress == null) throw new ArgumentNullException("ipAddress");
+
             using (RMWebClient WC = new RMWebClient())
             {
                 WC.Headers[HttpRequestHeader.Authorization] = "Basic " + Convert.ToBase64String(Encoding.ASCII.GetBytes(HC.Username + ":" + HC.Password.GetPlainText()));

@@ -56,6 +56,7 @@
     <Compile Include="ConfigureEmailAlerts.Designer.cs">
       <DependentUpon>ConfigureEmailAlerts.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="LogWindowForm.cs">
       <SubType>Form</SubType>

@@ -32,11 +32,14 @@ namespace RandM.PDDNS
             this.AddForm = typeof(AddPointForm).FullName;
             this.EditForm = typeof(EditPointForm).FullName;
             this.Name = name;
-            this.Url = "http://www.pointhq.com";
+            this.Url = new Uri("http://www.pointhq.com");
         }
 
         public override void Update(HostConfig HC, IPAddress ipAddress)
         {
+            if (HC == null) throw new ArgumentNullException("HC");
+            if (ipAddress == null) throw new ArgumentNullException("ipAddress");
+
             using (RMWebClient WC = new RMWebClient())
             {
                 WC.ContentType = "application/xml";

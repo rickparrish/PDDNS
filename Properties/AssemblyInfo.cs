@@ -56,5 +56,5 @@ using System;
 [assembly: AssemblyVersion("13.02.17")]
 [assembly: AssemblyFileVersion("13.02.17")]
 
-[assembly: CLSCompliant(true)]
+[assembly: CLSCompliant(false)]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

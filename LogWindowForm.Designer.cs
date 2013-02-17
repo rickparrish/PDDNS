@@ -55,9 +55,9 @@ namespace RandM.PDDNS
                         {
                             FileUtils.FileWriteAllText(Path.ChangeExtension(Config.Default.FileName, ".log"), LogText);
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Logging.instance.LogException("Unabled to save log entries to \"" + Path.ChangeExtension(Config.Default.FileName, ".log") + "\"", ex);
+                            // Can't do much about it at this point, so just ignore it
                         }
                     }
                 }
