@@ -1,7 +1,11 @@
 R&M PDDNS: A Promiscuous Dynamic DNS Client
 ===========================================
 
-A dynamic DNS client supporting multiple service providers
+PDDNS was originally short for "Point Dynamic DNS", since it originally supported just Point DNS.  Then someone asked me to fix a bug in a really old client I wrote for DtDNS, so I decided rather than fixing the really old client that I don't even know if I have the source for, it would be better to just update PDDNS to support multiple clients.<br />
+<br />
+So as you can see from the title, PDDNS is now short for "Promiscuous Dynamic DNS" (based on the lesser known definition "consisting of parts, elements, or individuals of different kinds brought together without order.")<br />
+<br />
+Since I also had accounts for Dyn and NoIP, I figured I might as well add support for them in the first version as well.
 
 Supported Providers
 ===================
@@ -11,20 +15,20 @@ Currently PDDNS supports <a href="http://dtdns.com">DtDNS</a>, <a href="http://d
 LICENSE
 =======
 
-  R&M PDDNS: A Promiscuous Dynamic DNS Client
-  Copyright (C) 2013  Rick Parrish, R&M Software
+    R&M PDDNS: A Promiscuous Dynamic DNS Client
+    Copyright (C) 2013  Rick Parrish, R&M Software
 
-  This file is part of PDDNS.
+    This file is part of PDDNS.
 
-  PDDNS is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  any later version.
+    PDDNS is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    any later version.
 
-  PDDNS is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
+    PDDNS is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with PDDNS.  If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License
+    along with PDDNS.  If not, see <http://www.gnu.org/licenses/>.
