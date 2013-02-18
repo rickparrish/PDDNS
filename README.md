@@ -5,7 +5,9 @@ PDDNS was originally short for "Point Dynamic DNS", since it originally supporte
 <br />
 So as you can see from the title, PDDNS is now short for "Promiscuous Dynamic DNS" (based on the lesser known definition "consisting of parts, elements, or individuals of different kinds brought together without order.")<br />
 <br />
-Since I also had accounts for Dyn and NoIP, I figured I might as well add support for them in the first version as well.
+Since I also had accounts for Dyn and NoIP, I figured I might as well add support for them in the first version as well.<br />
+<br />
+You'll also need to get <a href="https://github.com/rickparrish/RMLib">RMLib</a> and <a href="https://github.com/rickparrish/RMLibUI">RMLibUI</a> in order to compile this project.
 
 Supported Providers
 ===================
