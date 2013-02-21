@@ -30,9 +30,9 @@ using System.Windows.Forms;
 
 namespace RandM.PDDNS
 {
-    public partial class ConfigureEmailAlerts : Form
+    public partial class ConfigureEmailAlertsForm : Form
     {
-        public ConfigureEmailAlerts()
+        public ConfigureEmailAlertsForm()
         {
             InitializeComponent();
 
@@ -55,7 +55,7 @@ namespace RandM.PDDNS
 
         private void cmdSave_Click(object sender, EventArgs e)
         {
-            if (chkIPChange.Checked || chkUpdateError.Checked)
+            if (chkIPChange.Checked || chkUpdateError.Checked || chkNewVersion.Checked)
             {
                 if (!ValidateInputs()) return;
             }

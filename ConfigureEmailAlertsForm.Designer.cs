@@ -19,7 +19,7 @@
 */
 namespace RandM.PDDNS
 {
-    partial class ConfigureEmailAlerts
+    partial class ConfigureEmailAlertsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -48,7 +48,7 @@ namespace RandM.PDDNS
         private void InitializeComponent()
         {
             RandM.RMLib.RMSecureString rmSecureString1 = new RandM.RMLib.RMSecureString();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigureEmailAlerts));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigureEmailAlertsForm));
             this.cmdCancel = new System.Windows.Forms.Button();
             this.cmdSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();

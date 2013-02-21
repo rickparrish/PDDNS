@@ -50,11 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigureEmailAlerts.cs">
+    <Compile Include="ConfigureEmailAlertsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConfigureEmailAlerts.Designer.cs">
-      <DependentUpon>ConfigureEmailAlerts.cs</DependentUpon>
+    <Compile Include="ConfigureEmailAlertsForm.Designer.cs">
+      <DependentUpon>ConfigureEmailAlertsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Logging.cs" />
@@ -119,8 +119,8 @@
     <Compile Include="Providers\Point\PointZones.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ConfigureEmailAlerts.resx">
-      <DependentUpon>ConfigureEmailAlerts.cs</DependentUpon>
+    <EmbeddedResource Include="ConfigureEmailAlertsForm.resx">
+      <DependentUpon>ConfigureEmailAlertsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfigureIPDetectionForm.resx">
       <DependentUpon>ConfigureIPDetectionForm.cs</DependentUpon>
@@ -176,7 +176,6 @@
     <EmbeddedResource Include="EmailTemplates\UpdateError.html" />
     <EmbeddedResource Include="EmailTemplates\IPChange.html" />
     <Content Include="Fatcow-Farm-Fresh-World.ico" />
-    <Content Include="Icon 16+32.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DLL\RMLibUI\RMLibUI.csproj">

@@ -295,7 +295,7 @@ namespace RandM.PDDNS
 
         private void mnuFileConfigureEmailAlerts_Click(object sender, EventArgs e)
         {
-            using (ConfigureEmailAlerts F = new ConfigureEmailAlerts())
+            using (ConfigureEmailAlertsForm F = new ConfigureEmailAlertsForm())
             {
                 F.ShowDialog();
             }
