@@ -91,6 +91,7 @@ namespace RandM.PDDNS
             // lblIPAddress
             // 
             this.lblIPAddress.AutoSize = true;
+            this.lblIPAddress.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblIPAddress.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIPAddress.ForeColor = System.Drawing.Color.Orange;
             this.lblIPAddress.Location = new System.Drawing.Point(3, 5);
@@ -98,6 +99,7 @@ namespace RandM.PDDNS
             this.lblIPAddress.Size = new System.Drawing.Size(194, 45);
             this.lblIPAddress.TabIndex = 0;
             this.lblIPAddress.Text = "Checking...";
+            this.lblIPAddress.Click += new System.EventHandler(this.lblIPAddress_Click);
             // 
             // Tray
             // 

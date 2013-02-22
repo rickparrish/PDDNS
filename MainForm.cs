@@ -186,6 +186,11 @@ namespace RandM.PDDNS
             tmrGetExternalIP.Start();
         }
 
+        private void lblIPAddress_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(lblIPAddress.Text);
+        }
+
         void LoadEmailTemplates()
         {
             Assembly CurrentAssembly = Assembly.GetExecutingAssembly();
