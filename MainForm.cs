@@ -90,6 +90,12 @@ namespace RandM.PDDNS
                             Logging.instance.LogException("Unable to resolve \"" + HC.Hostname + "\"", ex);
                         }
 
+                        // Also check if it has been > 7 days since we updated, and if so, force an update to ensure our host doesn't expire
+                        if (DateTime.Now.Subtract(HC.LastUpdateDate).TotalDays > 7)
+                        {
+                            HostNeedsUpdate = true;
+                        }
+
                         if (HostNeedsUpdate && !HC.Disabled)
                         {
                             // If we get here it means the IP retrieved from DNS doesn't match our detected external IP, so
@@ -100,7 +106,7 @@ namespace RandM.PDDNS
                             // unless one hour has passed since the last update
                             if ((localIPAddress.ToString() != HC.LastUpdateIP) || (DateTime.Now.Subtract(HC.LastUpdateDate).TotalHours > 1))
                             {
-                                if (Debugger.IsAttached && (Dialog.YesNo("Do you want to update " + HC.Hostname + "?", "Confirm Update") == DialogResult.Yes))
+                                if (!Debugger.IsAttached || (Dialog.YesNo("Do you want to update " + HC.Hostname + "?", "Confirm Update") == DialogResult.Yes))
                                 {
                                     Logging.instance.LogMessage("Updating \"" + HC.Hostname + "\" (" + HC.Provider.ToString() + ") to " + localIPAddress);
                                     HC.LastUpdateIP = localIPAddress.ToString();
