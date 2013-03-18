@@ -91,7 +91,7 @@ namespace RandM.PDDNS
                         }
 
                         // Also check if it has been > 7 days since we updated, and if so, force an update to ensure our host doesn't expire
-                        if (DateTime.Now.Subtract(HC.LastUpdateDate).TotalDays > 7)
+                        if (DateTime.Now.Subtract(HC.LastUpdateDate).TotalDays >= 7.0)
                         {
                             HostNeedsUpdate = true;
                         }
