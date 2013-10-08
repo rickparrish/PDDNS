@@ -7,12 +7,14 @@ So as you can see from the title, PDDNS is now short for "Promiscuous Dynamic DN
 <br />
 Since I also had accounts for Dyn and NoIP, I figured I might as well add support for them in the first version as well.<br />
 <br />
+I recently switched from Point to CloudFlare, so CloudFlare is now also on the list of supported providers.<br />
+<br />
 You'll also need to get <a href="https://github.com/rickparrish/RMLib">RMLib</a> and <a href="https://github.com/rickparrish/RMLibUI">RMLibUI</a> in order to compile this project.
 
 Supported Providers
 ===================
 
-Currently PDDNS supports <a href="http://dtdns.com">DtDNS</a>, <a href="http://dyn.com">Dyn</a>, <a href="http://noip.com">NoIP</a>, and <a href="http://pointhq.com">Point</a>.  I'm always open to supporting more, these just happened to be the ones I've used in the past and so had accounts ready to test with.
+Currently PDDNS supports <a href="http://cloudflare.com">CloudFlare</a>, <a href="http://dtdns.com">DtDNS</a>, <a href="http://dyn.com">Dyn</a>, <a href="http://noip.com">NoIP</a>, and <a href="http://pointhq.com">Point</a>.  I'm always open to supporting more, these just happened to be the ones I've used in the past and so had accounts ready to test with.
 
 LICENSE
 =======

@@ -27,6 +27,7 @@ namespace RandM.PDDNS
     public enum ProviderName
     {
         None,
+        CloudFlare,
         DtDNS,
         Dyn,
         NoIP,

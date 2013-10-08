@@ -31,7 +31,7 @@ using System;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("R&M Software")]
 [assembly: AssemblyProduct("PDDNS")]
-[assembly: AssemblyCopyright("Copyright ©  2013 Rick Parrish, R&M Software")]
+[assembly: AssemblyCopyright("Copyright © 2013 Rick Parrish, R&M Software")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -53,8 +53,8 @@ using System;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("13.02.17")]
-[assembly: AssemblyFileVersion("13.02.17")]
+[assembly: AssemblyVersion("13.10.07")]
+[assembly: AssemblyFileVersion("13.0.07")]
 
 [assembly: CLSCompliant(false)]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

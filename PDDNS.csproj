@@ -67,6 +67,19 @@
     <Compile Include="Provider.cs" />
     <Compile Include="ProviderName.cs" />
     <Compile Include="Providers.cs" />
+    <Compile Include="Providers\CloudFlare\AddCloudFlareForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Providers\CloudFlare\AddCloudFlareForm.Designer.cs">
+      <DependentUpon>AddCloudFlareForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Providers\CloudFlare\EditCloudFlareForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Providers\CloudFlare\EditCloudFlareForm.Designer.cs">
+      <DependentUpon>EditCloudFlareForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Providers\CloudFlare\CloudFlareProvider.cs" />
     <Compile Include="Providers\DtDNS\DtDNSProvider.cs" />
     <Compile Include="Providers\Dyn\AddEditDynForm.cs">
       <SubType>Form</SubType>
@@ -127,6 +140,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LogWindowForm.resx">
       <DependentUpon>LogWindowForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Providers\CloudFlare\AddCloudFlareForm.resx">
+      <DependentUpon>AddCloudFlareForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Providers\CloudFlare\EditCloudFlareForm.resx">
+      <DependentUpon>EditCloudFlareForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Providers\DtDNS\AddEditDtDNSForm.resx">
       <DependentUpon>AddEditDtDNSForm.cs</DependentUpon>

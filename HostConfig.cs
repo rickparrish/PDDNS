@@ -27,6 +27,8 @@ namespace RandM.PDDNS
 {
     public class HostConfig : ConfigHelper
     {
+        public const string CLOUDFLARE_REC_ID = "rec_id";
+        public const string CLOUDFLARE_ZONE_NAME = "zone_name";
         public const string POINT_RECORD_ID = "RecordId";
         public const string POINT_ZONE_ID = "ZoneId";
 

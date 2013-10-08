@@ -52,6 +52,7 @@ namespace RandM.PDDNS
 
         public static void Init()
         {
+            _Providers.Add(ProviderName.CloudFlare, new CloudFlareProvider(ProviderName.CloudFlare.ToString()));
             _Providers.Add(ProviderName.DtDNS, new DtDNSProvider(ProviderName.DtDNS.ToString()));
             _Providers.Add(ProviderName.Dyn, new DynProvider(ProviderName.Dyn.ToString()));
             _Providers.Add(ProviderName.NoIP, new NoIPProvider(ProviderName.NoIP.ToString()));
