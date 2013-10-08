@@ -340,7 +340,7 @@ namespace RandM.PDDNS
 
         private void mnuHelpAbout_Click(object sender, EventArgs e)
         {
-            Dialog.Information(ProcessUtils.Title + "\r\nversion " + ProcessUtils.ProductVersion + "\r\nby Rick Parrish of R&M Software\r\nhttp://www.randm.ca/pddns.aspx\r\n\r\nProgram icons by Fatcow Web Hosting\r\nhttp://www.fatcow.com/free-icons", "Help -> About");
+            Dialog.Information(ProcessUtils.Title + "\r\nversion " + ProcessUtils.ProductVersion + "\r\nby Rick Parrish of R&M Software\r\nhttp://www.randm.ca/pddns/\r\n\r\nProgram icons by Fatcow Web Hosting\r\nhttp://www.fatcow.com/free-icons", "Help -> About");
         }
 
         private void mnuHelpCheckForUpdate_Click(object sender, EventArgs e)
@@ -353,7 +353,7 @@ namespace RandM.PDDNS
 
         private void mnuHelpSupportWebsite_Click(object sender, EventArgs e)
         {
-            Process.Start("http://www.randm.ca/pddns.aspx");
+            Process.Start("http://www.randm.ca/pddns/");
         }
 
         private void mnuViewLogWindow_Click(object sender, EventArgs e)
@@ -477,7 +477,7 @@ namespace RandM.PDDNS
 
             if (_NewVersionAvailable)
             {
-                Logging.instance.LogMessage("A new version is available at http://www.randm.ca/pddns.aspx");
+                Logging.instance.LogMessage("A new version is available at http://www.randm.ca/pddns/");
             }
             else
             {
