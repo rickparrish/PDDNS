@@ -57,6 +57,11 @@ namespace RandM.PDDNS
             base.Load(hostname);
         }
 
+        public new void Delete()
+        {
+            base.Delete();
+        }
+
         public static string[] GetHostnames()
         {
             List<string> Result = new List<string>();

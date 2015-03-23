@@ -45,7 +45,10 @@ namespace RandM.PDDNS
             List<string> Result = new List<string>();
             foreach (KeyValuePair<ProviderName, Provider> KVP in _Providers)
             {
-                Result.Add(KVP.Key.ToString());
+                if (KVP.Value.Url != null)
+                {
+                    Result.Add(KVP.Key.ToString());
+                }
             }
             return Result.ToArray();
         }
@@ -54,7 +57,7 @@ namespace RandM.PDDNS
         {
             _Providers.Add(ProviderName.CloudFlare, new CloudFlareProvider(ProviderName.CloudFlare.ToString()));
             _Providers.Add(ProviderName.DtDNS, new DtDNSProvider(ProviderName.DtDNS.ToString()));
-            _Providers.Add(ProviderName.Dyn, new DynProvider(ProviderName.Dyn.ToString()));
+            _Providers.Add(ProviderName.Dyn, new UnsupportedProvider(ProviderName.Dyn.ToString()));
             _Providers.Add(ProviderName.NoIP, new NoIPProvider(ProviderName.NoIP.ToString()));
             _Providers.Add(ProviderName.Point, new PointProvider(ProviderName.Point.ToString()));
         }

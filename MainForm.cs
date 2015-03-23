@@ -189,6 +189,7 @@ namespace RandM.PDDNS
         private void lblIPAddress_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(lblIPAddress.Text);
+            this.WindowState = FormWindowState.Minimized;
         }
 
         void LoadEmailTemplates()
@@ -255,6 +256,25 @@ namespace RandM.PDDNS
                             Logging.instance.LogMessage("Initiating  update (user edited a host)");
                             GetExternalIPAndCheckHosts();
                         }
+                    }
+                }
+            }
+        }
+
+        private void lvHosts_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (lvHosts.SelectedItems.Count > 0)
+            {
+                if (e.KeyCode == Keys.Delete)
+                {
+                    if (Dialog.NoYes("Really delete " + lvHosts.SelectedItems[0].Text + "?", "Confirm Delete") == DialogResult.Yes)
+                    {
+                        // Delete from ini
+                        HostConfig HC = new HostConfig(lvHosts.SelectedItems[0].Text);
+                        HC.Delete();
+
+                        // Delete from interface
+                        lvHosts.Items.RemoveAt(lvHosts.SelectedIndices[0]);
                     }
                 }
             }
@@ -359,6 +379,21 @@ namespace RandM.PDDNS
         private void mnuViewLogWindow_Click(object sender, EventArgs e)
         {
             Logging.instance.ShowDialog();
+        }
+
+        private void popTrayCopyIPAddress_Click(object sender, EventArgs e)
+        {
+            lblIPAddress_Click(null, EventArgs.Empty);
+        }
+
+        private void popTrayExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void popTrayShowForm_Click(object sender, EventArgs e)
+        {
+            Tray_DoubleClick(null, EventArgs.Empty);
         }
 
         private void SendEmailIPChange(string oldIPAddress, string newIPAddress)

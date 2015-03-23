@@ -75,8 +75,14 @@ namespace RandM.PDDNS
             this.mnuHelpCheckForUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrCheckForUpdate = new System.Windows.Forms.Timer(this.components);
+            this.popTray = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.popTrayShowForm = new System.Windows.Forms.ToolStripMenuItem();
+            this.popTrayCopyIPAddress = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.popTrayExit = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.MainMenu.SuspendLayout();
+            this.popTray.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -103,6 +109,7 @@ namespace RandM.PDDNS
             // 
             // Tray
             // 
+            this.Tray.ContextMenuStrip = this.popTray;
             this.Tray.Icon = ((System.Drawing.Icon)(resources.GetObject("Tray.Icon")));
             this.Tray.Text = "R&&&M PDDNS";
             this.Tray.DoubleClick += new System.EventHandler(this.Tray_DoubleClick);
@@ -130,6 +137,7 @@ namespace RandM.PDDNS
             this.lvHosts.UseCompatibleStateImageBehavior = false;
             this.lvHosts.View = System.Windows.Forms.View.Details;
             this.lvHosts.DoubleClick += new System.EventHandler(this.lvHosts_DoubleClick);
+            this.lvHosts.KeyUp += new System.Windows.Forms.KeyEventHandler(this.lvHosts_KeyUp);
             // 
             // columnHeader1
             // 
@@ -273,6 +281,43 @@ namespace RandM.PDDNS
             this.tmrCheckForUpdate.Interval = 1000;
             this.tmrCheckForUpdate.Tick += new System.EventHandler(this.tmrCheckForUpdate_Tick);
             // 
+            // popTray
+            // 
+            this.popTray.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.popTrayShowForm,
+            this.popTrayCopyIPAddress,
+            this.toolStripMenuItem3,
+            this.popTrayExit});
+            this.popTray.Name = "popTray";
+            this.popTray.Size = new System.Drawing.Size(161, 76);
+            // 
+            // popTrayShowForm
+            // 
+            this.popTrayShowForm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.popTrayShowForm.Name = "popTrayShowForm";
+            this.popTrayShowForm.Size = new System.Drawing.Size(160, 22);
+            this.popTrayShowForm.Text = "Show Form";
+            this.popTrayShowForm.Click += new System.EventHandler(this.popTrayShowForm_Click);
+            // 
+            // popTrayCopyIPAddress
+            // 
+            this.popTrayCopyIPAddress.Name = "popTrayCopyIPAddress";
+            this.popTrayCopyIPAddress.Size = new System.Drawing.Size(160, 22);
+            this.popTrayCopyIPAddress.Text = "Copy IP Address";
+            this.popTrayCopyIPAddress.Click += new System.EventHandler(this.popTrayCopyIPAddress_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(157, 6);
+            // 
+            // popTrayExit
+            // 
+            this.popTrayExit.Name = "popTrayExit";
+            this.popTrayExit.Size = new System.Drawing.Size(160, 22);
+            this.popTrayExit.Text = "Exit";
+            this.popTrayExit.Click += new System.EventHandler(this.popTrayExit_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,6 +337,7 @@ namespace RandM.PDDNS
             this.panel2.PerformLayout();
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
+            this.popTray.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,6 +370,11 @@ namespace RandM.PDDNS
         private System.Windows.Forms.Timer tmrCheckForUpdate;
         private System.Windows.Forms.ToolStripMenuItem mnuView;
         private System.Windows.Forms.ToolStripMenuItem mnuViewLogWindow;
+        private System.Windows.Forms.ContextMenuStrip popTray;
+        private System.Windows.Forms.ToolStripMenuItem popTrayShowForm;
+        private System.Windows.Forms.ToolStripMenuItem popTrayCopyIPAddress;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem popTrayExit;
 
     }
 }
