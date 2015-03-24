@@ -62,6 +62,7 @@ namespace RandM.PDDNS
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chkSaveEmailAddressAndAPIKey = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -135,6 +136,7 @@ namespace RandM.PDDNS
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.chkSaveEmailAddressAndAPIKey);
             this.panel2.Controls.Add(this.cmdCancel);
             this.panel2.Controls.Add(this.cmdSave);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -197,6 +199,18 @@ namespace RandM.PDDNS
             this.columnHeader2.Text = "RecordId";
             this.columnHeader2.Width = 100;
             // 
+            // chkSaveEmailAddressAndAPIKey
+            // 
+            this.chkSaveEmailAddressAndAPIKey.AutoSize = true;
+            this.chkSaveEmailAddressAndAPIKey.Checked = true;
+            this.chkSaveEmailAddressAndAPIKey.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkSaveEmailAddressAndAPIKey.Location = new System.Drawing.Point(91, 10);
+            this.chkSaveEmailAddressAndAPIKey.Name = "chkSaveEmailAddressAndAPIKey";
+            this.chkSaveEmailAddressAndAPIKey.Size = new System.Drawing.Size(182, 17);
+            this.chkSaveEmailAddressAndAPIKey.TabIndex = 2;
+            this.chkSaveEmailAddressAndAPIKey.Text = "Save Email Address and API Key";
+            this.chkSaveEmailAddressAndAPIKey.UseVisualStyleBackColor = true;
+            // 
             // AddCloudFlareForm
             // 
             this.AcceptButton = this.cmdRetrieve;
@@ -217,6 +231,7 @@ namespace RandM.PDDNS
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -237,5 +252,6 @@ namespace RandM.PDDNS
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.CheckBox chkSaveEmailAddressAndAPIKey;
     }
 }

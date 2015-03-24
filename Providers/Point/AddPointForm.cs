@@ -37,6 +37,9 @@ namespace RandM.PDDNS
         public AddPointForm()
         {
             InitializeComponent();
+
+            txtAPIKey.Text = Config.Default.PointAPIKey.GetPlainText();
+            txtEmailAddress.Text = Config.Default.PointEmailAddress;
         }
 
         void cmdRetrieve_Click(object sender, EventArgs e)
@@ -113,6 +116,18 @@ namespace RandM.PDDNS
                 HC.Username = txtEmailAddress.Text.Trim();
                 HC.Save();
             }
+
+            if (chkSaveEmailAddressAndAPIKey.Checked)
+            {
+                Config.Default.PointAPIKey = txtAPIKey.Text;
+                Config.Default.PointEmailAddress = txtEmailAddress.Text;
+            }
+            else
+            {
+                Config.Default.PointAPIKey = "";
+                Config.Default.PointEmailAddress = "";
+            }
+            Config.Default.Save();
 
             DialogResult = DialogResult.OK;
         }

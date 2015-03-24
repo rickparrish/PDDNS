@@ -39,6 +39,9 @@ namespace RandM.PDDNS
         public AddCloudFlareForm()
         {
             InitializeComponent();
+
+            txtAPIKey.Text = Config.Default.CloudFlareAPIKey.GetPlainText();
+            txtEmailAddress.Text = Config.Default.CloudFlareEmailAddress;
         }
 
         void cmdRetrieve_Click(object sender, EventArgs e)
@@ -58,7 +61,7 @@ namespace RandM.PDDNS
                     Params.Add("email", txtEmailAddress.Text.Trim());
                     Params.Add("tkn", txtAPIKey.Text.Trim());
                     Hashtable zone_load_multi_response = (Hashtable)JSON.JsonDecode(Encoding.UTF8.GetString(WC.UploadValues("https://www.cloudflare.com/api_json.html", "POST", Params)));
-                    if (zone_load_multi_response["result"] == "success")
+                    if ((zone_load_multi_response["result"] != null) && (zone_load_multi_response["result"].ToString() == "success"))
                     {
                         Hashtable Response = (Hashtable)zone_load_multi_response["response"];
                         Hashtable Zones = (Hashtable)Response["zones"];
@@ -127,6 +130,18 @@ namespace RandM.PDDNS
                 HC.Username = txtEmailAddress.Text.Trim();
                 HC.Save();
             }
+
+            if (chkSaveEmailAddressAndAPIKey.Checked)
+            {
+                Config.Default.CloudFlareAPIKey = txtAPIKey.Text;
+                Config.Default.CloudFlareEmailAddress = txtEmailAddress.Text;
+            }
+            else
+            {
+                Config.Default.CloudFlareAPIKey = "";
+                Config.Default.CloudFlareEmailAddress = "";
+            }
+            Config.Default.Save();
 
             DialogResult = DialogResult.OK;
         }

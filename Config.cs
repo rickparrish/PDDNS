@@ -28,6 +28,8 @@ namespace RandM.PDDNS
 {
     class Config : ConfigHelper
     {
+        public RMSecureString CloudFlareAPIKey { get; set; }
+        public string CloudFlareEmailAddress { get; set; }
         public bool EmailAlertIPChange { get; set; }
         public bool EmailAlertNewVersion { get; set; }
         public bool EmailAlertUpdateError { get; set; }
@@ -36,6 +38,8 @@ namespace RandM.PDDNS
         public GetExternalIPv4Methods[] GetExternalIPMethodOrder { get; set; }
         public string LastIPAddress { get; set; }
         public bool LogToDisk { get; set; }
+        public RMSecureString PointAPIKey { get; set; }
+        public string PointEmailAddress { get; set; }
         public string SmtpHostname { get; set; }
         public RMSecureString SmtpPassword { get; set; }
         public int SmtpPort { get; set; }
@@ -46,6 +50,8 @@ namespace RandM.PDDNS
 
         public Config() : base()
         {
+            CloudFlareAPIKey = "";
+            CloudFlareEmailAddress = "";
             LogToDisk = false;
             EmailAlertIPChange = true;
             EmailAlertNewVersion = true;
@@ -58,6 +64,8 @@ namespace RandM.PDDNS
                                                                       GetExternalIPv4Methods.Http81,
                                                                       GetExternalIPv4Methods.Http80 };
             LastIPAddress = IPAddress.None.ToString();
+            PointAPIKey = "";
+            PointEmailAddress = "";
             SmtpHostname = "";
             SmtpPassword = new RMSecureString();
             SmtpPort = 587;
