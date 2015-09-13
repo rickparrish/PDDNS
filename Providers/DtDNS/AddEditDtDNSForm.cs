@@ -68,6 +68,7 @@ namespace RandM.PDDNS
             }
 
             HostConfig HC = new HostConfig(txtHostname.Text.Trim());
+            HC.LastUpdateDate = DateTime.MinValue;
             HC.Password = txtPassword.SecureText.GetSecureText();
             HC.Provider = ProviderName.DtDNS;
             HC.Username = HC.Hostname;
@@ -75,7 +76,6 @@ namespace RandM.PDDNS
             {
                 // Saving changes should reset the disabled state and last update date, so a new update can be attempted right away
                 HC.Disabled = false;
-                HC.LastUpdateDate = DateTime.MinValue;
             }
             HC.Save();
 

@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
 using System.Text;
+using System.Linq;
 
 namespace RandM.PDDNS
 {
@@ -51,7 +52,12 @@ namespace RandM.PDDNS
                     Params.Add("content", ipAddress.ToString());
                     Params.Add("email", HC.Username);
                     Params.Add("id", HC.ProviderSpecificSettings[HostConfig.CLOUDFLARE_REC_ID]);
-                    Params.Add("name", HC.Hostname.Substring(0, HC.Hostname.IndexOf(".")));
+                    int HostnamePeriodCount = HC.Hostname.Count(x => x == '.'); // TODO Do this for other providers too
+                    switch (HostnamePeriodCount) {
+                        case 0: throw new Exception("Hostname has 0 periods?");
+                        case 1: Params.Add("name", HC.Hostname); break; // One period == full domain name (ie github.com)
+                        default: Params.Add("name", string.Join(".", HC.Hostname.Split('.'), 0, HostnamePeriodCount - 1)); break; // More than one period == all but last element (ie www.github.com or a.b.c.d.github.com)
+                    }
                     Params.Add("tkn", HC.Password.GetPlainText());
                     Params.Add("ttl", "1");
                     Params.Add("type", "A");

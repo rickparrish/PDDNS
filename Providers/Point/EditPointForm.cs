@@ -49,13 +49,13 @@ namespace RandM.PDDNS
             if (!Dialog.ValidateIsNotEmpty(txtAPIKey)) return;
 
             HostConfig HC = new HostConfig(txtHostname.Text.Trim());
+            HC.LastUpdateDate = DateTime.MinValue;
             HC.Password = txtAPIKey.SecureText.GetSecureText();
             HC.Username = txtEmailAddress.Text.Trim();
             if (HC.Disabled)
             {
                 // Saving changes should reset the disabled state and last update date, so a new update can be attempted right away
                 HC.Disabled = false;
-                HC.LastUpdateDate = DateTime.MinValue;
             }
             HC.Save();
 

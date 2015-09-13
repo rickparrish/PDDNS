@@ -71,6 +71,7 @@ namespace RandM.PDDNS
                         bool HostNeedsUpdate = true;
 
                         // Get current IP for host (to see if it differs from detected IP)
+                        // TODO This is broken for hostnames on CloudFlare with the "orange cloud"
                         try
                         {
                             IPHostEntry HostEnt = Dns.GetHostEntry(HC.Hostname);
@@ -230,9 +231,9 @@ namespace RandM.PDDNS
             foreach (string ProviderName in ProviderNames)
             {
                 ToolStripMenuItem TSMI = new ToolStripMenuItem("Add " + ProviderName + " hostname");
-                TSMI.Click += mnuAdd_Click;
+                TSMI.Click += mnuHostnamesAdd_Click;
                 TSMI.Tag = ProviderName;
-                mnuAdd.DropDownItems.Add(TSMI);
+                mnuHostnamesAdd.DropDownItems.Add(TSMI);
             }
         }
 
@@ -267,15 +268,7 @@ namespace RandM.PDDNS
             {
                 if (e.KeyCode == Keys.Delete)
                 {
-                    if (Dialog.NoYes("Really delete " + lvHosts.SelectedItems[0].Text + "?", "Confirm Delete") == DialogResult.Yes)
-                    {
-                        // Delete from ini
-                        HostConfig HC = new HostConfig(lvHosts.SelectedItems[0].Text);
-                        HC.Delete();
-
-                        // Delete from interface
-                        lvHosts.Items.RemoveAt(lvHosts.SelectedIndices[0]);
-                    }
+                    mnuHostnamesDelete_Click(sender, e);
                 }
             }
         }
@@ -302,28 +295,6 @@ namespace RandM.PDDNS
             }
         }
 
-        private void mnuAdd_Click(object sender, EventArgs e)
-        {
-            Provider P = Providers.GetProviderByName(((ToolStripMenuItem)sender).Tag.ToString());
-            if (P == null)
-            {
-                Logging.instance.LogError("Unable to load provider \"" + ((ToolStripMenuItem)sender).Tag.ToString() + "\"");
-                Dialog.Error("Sorry, there was an error loading that particular Add Hostname form", "Error");
-            }
-            else
-            {
-                if (P.Add())
-                {
-                    LoadHosts();
-                    if (tmrGetExternalIP.Enabled)
-                    {
-                        Logging.instance.LogMessage("Initiating  update (user added a host)");
-                        GetExternalIPAndCheckHosts();
-                    }
-                }
-            }
-        }
-
         private void mnuFileConfigureEmailAlerts_Click(object sender, EventArgs e)
         {
             using (ConfigureEmailAlertsForm F = new ConfigureEmailAlertsForm())
@@ -345,19 +316,6 @@ namespace RandM.PDDNS
             Close();
         }
 
-        private void mnuFileUpdate_Click(object sender, EventArgs e)
-        {
-            if (tmrGetExternalIP.Enabled)
-            {
-                Logging.instance.LogMessage("Initiating  update (user clicked File -> Update hosts now)");
-                GetExternalIPAndCheckHosts();
-            }
-            else
-            {
-                Dialog.Error("An update is already in progress", "Unable to update now");
-            }
-        }
-
         private void mnuHelpAbout_Click(object sender, EventArgs e)
         {
             Dialog.Information(ProcessUtils.Title + "\r\nversion " + ProcessUtils.ProductVersion + "\r\nby Rick Parrish of R&M Software\r\nhttp://www.randm.ca/pddns/\r\n\r\nProgram icons by Fatcow Web Hosting\r\nhttp://www.fatcow.com/free-icons", "Help -> About");
@@ -374,6 +332,54 @@ namespace RandM.PDDNS
         private void mnuHelpSupportWebsite_Click(object sender, EventArgs e)
         {
             Process.Start("http://www.randm.ca/pddns/");
+        }
+
+        private void mnuHostnamesAdd_Click(object sender, EventArgs e)
+        {
+            Provider P = Providers.GetProviderByName(((ToolStripMenuItem)sender).Tag.ToString());
+            if (P == null)
+            {
+                Logging.instance.LogError("Unable to load provider \"" + ((ToolStripMenuItem)sender).Tag.ToString() + "\"");
+                Dialog.Error("Sorry, there was an error loading that particular Add Hostname form", "Error");
+            }
+            else
+            {
+                if (P.Add())
+                {
+                    LoadHosts();
+                    if (tmrGetExternalIP.Enabled)
+                    {
+                        Logging.instance.LogMessage("Initiating  update (user added a host)");
+                        GetExternalIPAndCheckHosts();
+                    }
+                }
+            }
+        }
+
+        private void mnuHostnamesDelete_Click(object sender, EventArgs e)
+        {
+            if (Dialog.NoYes("Really delete " + lvHosts.SelectedItems[0].Text + "?", "Confirm Delete") == DialogResult.Yes)
+            {
+                // Delete from ini
+                HostConfig HC = new HostConfig(lvHosts.SelectedItems[0].Text);
+                HC.Delete();
+
+                // Delete from interface
+                lvHosts.Items.RemoveAt(lvHosts.SelectedIndices[0]);
+            }
+        }
+
+        private void mnuHostnamesUpdate_Click(object sender, EventArgs e)
+        {
+            if (tmrGetExternalIP.Enabled)
+            {
+                Logging.instance.LogMessage("Initiating  update (user clicked Hostnames -> Update)");
+                GetExternalIPAndCheckHosts();
+            }
+            else
+            {
+                Dialog.Error("An update is already in progress", "Unable to update now");
+            }
         }
 
         private void mnuViewLogWindow_Click(object sender, EventArgs e)

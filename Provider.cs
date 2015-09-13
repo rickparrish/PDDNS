@@ -52,18 +52,18 @@ namespace RandM.PDDNS
 
         public bool Edit(string hostname)
         {
-                if (EditForm == null)
+            if (EditForm == null)
+            {
+                Dialog.Error("Sorry, you cannot edit hostnames for that service provider", "Edit not allowed");
+                return false;
+            }
+            else
+            {
+                using (Form F = (Form)Activator.CreateInstance(Type.GetType(EditForm), hostname))
                 {
-                    Dialog.Error("Sorry, you cannot edit hostnames for that service provider", "Edit not allowed");
-                    return false;
+                    return (F.ShowDialog() == DialogResult.OK);
                 }
-                else
-                {
-                    using (Form F = (Form)Activator.CreateInstance(Type.GetType(EditForm), hostname))
-                    {
-                        return (F.ShowDialog() == DialogResult.OK);
-                    }
-                }
+            }
         }
 
         public abstract void Update(HostConfig HC, IPAddress ipAddress);
