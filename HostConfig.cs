@@ -21,6 +21,7 @@ using RandM.RMLib;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Net;
 using System.Text;
 
 namespace RandM.PDDNS
@@ -78,6 +79,11 @@ namespace RandM.PDDNS
 
             Result.Sort();
             return Result.ToArray();
+        }
+
+        public IPAddress[] GetRemoteIPs()
+        {
+            return Providers.GetProvider(Provider).GetRemoteIPs(this);
         }
 
         public new void Save()

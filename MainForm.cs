@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Reflection;
@@ -74,8 +75,7 @@ namespace RandM.PDDNS
                         // TODO This is broken for hostnames on CloudFlare with the "orange cloud"
                         try
                         {
-                            IPHostEntry HostEnt = Dns.GetHostEntry(HC.Hostname);
-                            foreach (IPAddress RemoteIPAddress in HostEnt.AddressList)
+                            foreach (IPAddress RemoteIPAddress in HC.GetRemoteIPs().Reverse())
                             {
                                 SetCurrentIP(HC.Hostname, RemoteIPAddress.ToString());
                                 if (RemoteIPAddress.ToString() == localIPAddress.ToString())

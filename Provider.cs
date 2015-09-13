@@ -66,6 +66,11 @@ namespace RandM.PDDNS
             }
         }
 
+        public virtual IPAddress[] GetRemoteIPs(HostConfig HC)
+        {
+            return Dns.GetHostEntry(HC.Hostname).AddressList;
+        }
+
         public abstract void Update(HostConfig HC, IPAddress ipAddress);
     }
 }

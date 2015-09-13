@@ -38,6 +38,49 @@ namespace RandM.PDDNS
             this.Url = new Uri("http://www.cloudflare.com");
         }
 
+        public override IPAddress[] GetRemoteIPs(HostConfig HC) {
+            if (HC == null) throw new ArgumentNullException("HC");
+
+            using (RMWebClient WC = new RMWebClient())
+            {
+                try
+                {
+                    NameValueCollection Params = new NameValueCollection();
+                    Params.Add("a", "rec_load_all");
+                    Params.Add("email", HC.Username);
+                    Params.Add("tkn", HC.Password.GetPlainText());
+                    Params.Add("z", HC.ProviderSpecificSettings[HostConfig.CLOUDFLARE_ZONE_NAME]);
+                    Hashtable rec_load_all_response = (Hashtable)JSON.JsonDecode(Encoding.UTF8.GetString(WC.UploadValues("https://www.cloudflare.com/api_json.html", "POST", Params)));
+                    if (rec_load_all_response["result"].ToString() == "success")
+                    {
+                        Hashtable Response = (Hashtable)rec_load_all_response["response"];
+                        Hashtable Recs = (Hashtable)Response["recs"];
+                        ArrayList Objs = (ArrayList)Recs["objs"];
+
+                        foreach (Hashtable Obj in Objs)
+                        {
+                            if (Obj["name"].ToString().ToLower() == HC.Hostname.ToLower())
+                            {
+                                return new IPAddress[] {
+                                    IPAddress.Parse(Obj["content"].ToString())
+                                };
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Logging.instance.LogError("Unable to get remote IPs \"" + HC.Hostname + "\" (" + HC.Provider.ToString() + "): " + (rec_load_all_response["msg"] == null ? "Unknown reason" : rec_load_all_response["msg"].ToString()));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logging.instance.LogException("Unable to get remote IPs \"" + HC.Hostname + "\" (" + HC.Provider.ToString() + ")", ex);
+                }
+            }
+
+            return null;
+        }
+
         public override void Update(HostConfig HC, IPAddress ipAddress)
         {
             if (HC == null) throw new ArgumentNullException("HC");
