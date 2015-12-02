@@ -149,12 +149,14 @@ namespace RandM.PDDNS
             this.Icon = Properties.Resources.Fatcow_Farm_Fresh_World_go;
             Tray.Icon = this.Icon;
 
+            Tray.Text = "Checking...";
             lblIPAddress.Text = "Checking...";
             lblIPAddress.ForeColor = Color.Orange;
 
             IPAddress NewIPAddress = WebUtils.GetExternalIPv4(Config.Default.GetExternalIPMethodOrder);
             bool IsValidIP = (!WebUtils.IsPrivateIP(NewIPAddress) && (NewIPAddress.ToString() != IPAddress.Any.ToString()) && (NewIPAddress.ToString() != IPAddress.None.ToString()));
 
+            Tray.Text = NewIPAddress.ToString();
             lblIPAddress.Text = NewIPAddress.ToString();
             lblIPAddress.ForeColor = (IsValidIP ? Color.Green : Color.Red);
 

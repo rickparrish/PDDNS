@@ -61,7 +61,7 @@ namespace RandM.PDDNS
             GetExternalIPMethodOrder = new GetExternalIPv4Methods[] { GetExternalIPv4Methods.UnicastAddress,
                                                                       GetExternalIPv4Methods.NatPmp,
                                                                       GetExternalIPv4Methods.Upnp,
-                                                                      GetExternalIPv4Methods.Http81,
+                                                                      GetExternalIPv4Methods.Http8880,
                                                                       GetExternalIPv4Methods.Http80 };
             LastIPAddress = IPAddress.None.ToString();
             PointAPIKey = "";
