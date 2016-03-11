@@ -72,7 +72,6 @@ namespace RandM.PDDNS
                         bool HostNeedsUpdate = true;
 
                         // Get current IP for host (to see if it differs from detected IP)
-                        // TODO This is broken for hostnames on CloudFlare with the "orange cloud"
                         try
                         {
                             foreach (IPAddress RemoteIPAddress in HC.GetRemoteIPs().Reverse())
